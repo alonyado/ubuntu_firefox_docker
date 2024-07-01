@@ -19,7 +19,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://pac
 RUN /bin/bash -c "echo -e '\nPackage: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n' > /etc/apt/preferences.d/mozilla"
 
 #Install firefox + upgrade packages if needed
-RUN apt update && apt install -y firefox && apt upgrade
+RUN apt update && apt install -y firefox && apt upgrade -y
 
 # Starting Firefox application
 USER ${DOCKER_USERNAME}
