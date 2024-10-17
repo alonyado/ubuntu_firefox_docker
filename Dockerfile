@@ -6,7 +6,7 @@ ENV DISPLAY=:0
 ARG DOCKER_USERNAME=testuser
 ARG DOCKER_USER_UID=1001
 
-RUN apt update && apt install -y wget
+RUN apt-get update && apt-get install -y wget
 
 RUN useradd -m -u ${DOCKER_USER_UID} ${DOCKER_USERNAME}
 
@@ -19,7 +19,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://pac
 RUN /bin/bash -c "echo -e '\nPackage: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n' > /etc/apt/preferences.d/mozilla"
 
 #Install firefox + upgrade packages if needed
-RUN apt update && apt install -y firefox && apt upgrade -y
+RUN apt-get update && apt-get install -y firefox && apt-get upgrade -y
 
 # Starting Firefox application
 USER ${DOCKER_USERNAME}
