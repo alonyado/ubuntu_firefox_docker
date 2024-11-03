@@ -10,7 +10,7 @@ docker image rm ubuntu_firefox
 
 echo "building docker with user ${DOCKER_USERNAME} and uid ${DOCKER_USER_UID}"
 
-docker build -t ubuntu_firefox --build-arg="DOCKER_USERNAME=${DOCKER_USERNAME}" --build-arg="DOCKER_USER_UID=${DOCKER_USER_UID}"  .
+docker build -t ubuntu_firefox --build-arg="DOCKER_USERNAME=${DOCKER_USERNAME}" --build-arg="DOCKER_USER_UID=${DOCKER_USER_UID}"  ${0%/*}
 
 #Store last rebuild variables to be used in run.sh
 echo -e "#!/bin/bash\nDOCKER_USERNAME=${DOCKER_USERNAME}\nDOCKER_USER_UID=${DOCKER_USER_UID}"
